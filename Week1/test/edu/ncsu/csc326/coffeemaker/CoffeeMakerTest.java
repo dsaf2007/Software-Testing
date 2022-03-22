@@ -18,13 +18,14 @@ public class CoffeeMakerTest {
     }
 
     //negative test
-    //동일한 이름의 레시피를 addRecipe메소드를 통해 추가 할 경우
-    @Test
+    //�룞�씪�븳 �씠由꾩쓽 �젅�떆�뵾瑜� addRecipe硫붿냼�뱶瑜� �넻�빐 異붽� �븷 寃쎌슦
+   /* @Test
     public void addRecipeNegative() {
         r.setName("testRecipie");
         test.addRecipe(r);
         assertTrue(test.addRecipe(r));
     }
+    */
 
     @Test
     public void deleteRecipe() {
@@ -34,11 +35,12 @@ public class CoffeeMakerTest {
     }
 
     //negative test
-    //삭제할 레시피가 존재하지 않는 경우 삭제 시도
-    @Test
+    //�궘�젣�븷 �젅�떆�뵾媛� 議댁옱�븯吏� �븡�뒗 寃쎌슦 �궘�젣 �떆�룄
+    /*@Test
     public void deleteRecipeNegative() {
         assertEquals("testRecipie", test.deleteRecipe(0));
     }
+    */
 
     @Test
     public void editRecipe() {
@@ -49,21 +51,44 @@ public class CoffeeMakerTest {
     }
 
     //negative test
-    //수정할 레시피가 존재하지 않는 경우
-    @Test
+    //�닔�젙�븷 �젅�떆�뵾媛� 議댁옱�븯吏� �븡�뒗 寃쎌슦
+    /*@Test
     public void editRecipeNegative() {
         Recipe new_r = new Recipe();
         assertEquals("testRecipie", test.editRecipe(0,new_r));
     }
+    */
 
     @Test
     public void addInventory(){
+
         assertThrows(InventoryException.class, () -> test.addInventory("10","10","10","10"));
+        
+        assertThrows(InventoryException.class, () -> test.addInventory("0","10","10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","0","10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10","0","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10","10","0"));
+        
+        assertThrows(InventoryException.class, () -> test.addInventory(null,"10","10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10",null,"10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10",null,"10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10","10",null));
+        
+        assertThrows(InventoryException.class, () -> test.addInventory("-10","10","10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","-10","10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10","-10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10","10","-10"));
+        
+        assertThrows(InventoryException.class, () -> test.addInventory("null","10","10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","null","10","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10","null","10"));
+        assertThrows(InventoryException.class, () -> test.addInventory("10","10","10","null"));
+
     }
 
     //negative test
-    //add된 데이터와 기대값이 다를 때
-    @Test
+    //add�맂 �뜲�씠�꽣�� 湲곕�媛믪씠 �떎瑜� �븣
+    /*@Test
     public void addInventoryNegative(){
         try {
             test.addInventory("0", "15", "15", "15");
@@ -77,6 +102,7 @@ public class CoffeeMakerTest {
                 "Sugar: 15\n" +
                 "Chocolate: 15\n", test.checkInventory());
     }
+    */
 
     @Test
     public void checkInventory() {
@@ -91,8 +117,8 @@ public class CoffeeMakerTest {
     }
 
     //negative test
-    //set된 값과 expected된 값이 다를 때
-    @Test
+    //set�맂 媛믨낵 expected�맂 媛믪씠 �떎瑜� �븣
+    /*@Test
     public void checkInventoryNegative() {
         inventory.setMilk(0);
         inventory.setChocolate(10);
@@ -103,24 +129,31 @@ public class CoffeeMakerTest {
                 "Sugar: 10\n" +
                 "Chocolate: 10\n" , test.checkInventory());
     }
+    */
 
     @Test
     public void makeCoffee() throws RecipeException {
+    	
+    	//레시피가 없을 경우 추가
+    	int testChange = test.makeCoffee(0, 100);
+    	assertEquals(100, testChange);
+    	
         r.setPrice("50");
         test.addRecipe(r);
-        int testChange = test.makeCoffee(0,100);
+        testChange = test.makeCoffee(0,100);
         assertEquals(50, testChange);
     }
 
     //negative test
-    //change가 일치하지 않을 때
-    @Test
+    //change媛� �씪移섑븯吏� �븡�쓣 �븣
+    /*@Test
     public void makeCoffeeNegative() throws RecipeException {
         r.setPrice("50");
         test.addRecipe(r);
         int testChange = test.makeCoffee(0,100);
         assertEquals(40, testChange);
     }
+    */
 
     @Test
     public void getRecipes() {
@@ -131,11 +164,11 @@ public class CoffeeMakerTest {
     }
 
     //negative test
-    //가져올 레시피가 없을 때
-    @Test
+    //媛��졇�삱 �젅�떆�뵾媛� �뾾�쓣 �븣
+    /*@Test
     public void getRecipesNegative() {
         Recipe[] recipes = new Recipe[4];
         recipes[0] = r;
         assertArrayEquals(recipes, test.getRecipes());
-    }
+    }*/
 }
