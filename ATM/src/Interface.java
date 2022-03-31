@@ -333,12 +333,16 @@ public CustomerInfo enterLoginPinCode () {
 	return null;
 }
 
+
+
 //Start Main ()
 public static void main (String[] args) { 
 		//public native void cls();
 		//final static String ESC = "\033[";
 		//Runtime.getRuntime().exec("cls");
 		//System.out.flush();
+	    String[] input = {"osama123","1122"};
+	    args = input;
 		AccountTransaction aT = new AccountTransaction();
 		Account ac = new Account();
 		Interface in = new Interface();
