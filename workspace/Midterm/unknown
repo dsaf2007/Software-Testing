@@ -10,3 +10,4 @@ Generally line numbers or a search based context (especially when making changes
 Early line editors included Colossal Typewriter, Expensive Typewriter and QED. All three pre-dated the advent of UNIX; the former two ran on DEC PDP-1's, while the latter was a Unisys product.
 Numerous line editors are included with UNIX and Linux: ed is considered the standard UNIX editor, while ex extends it and has more features, and sed was written for pattern-based text editing as part of a shell script. For the first 10 years of the IBM PC, the only editor provided in DOS was the Edlin line editor.
 Line editors are still used non-interactively in shell scripts and when dealing with failing operating systems. Update systems such as patch traditionally used diff data converted into a script of ed commands.
+They are also used in many MUD systems, though many people edit text on their own computer using MUD's download and upload features.

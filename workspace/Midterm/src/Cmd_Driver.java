@@ -262,7 +262,8 @@ public class Cmd_Driver
        {
           CLN=FILE.GetCLN();
           end=Math.min(CLN+nLines-1,FILE.NumLins());
-          for(i=CLN; i>end; i++)
+          //for(i=CLN; i>end; i++) 수정전
+          for(i =CLN; i<=end;i++)//수정 후
               Msg.wLMsg(FILE.GetLine(i));
           FILE.SetCLN(end);
        }
@@ -276,7 +277,8 @@ public class Cmd_Driver
        if(Valid_Lines(FILE,nLines)) 
        {
           CLN=FILE.GetCLN();
-          end=Math.min(CLN,FILE.NumLins());
+          //end=Math.min(CLN,FILE.NumLins()); 수정전
+          end = Math.min(CLN+nLines-1, FILE.NumLins()); //수정 후
           for(i=CLN; i<=end; i++)
               Msg.wLMsg(FILE.GetLine(i));
        }
@@ -391,7 +393,7 @@ public class Cmd_Driver
 
           // Start match & replace loop: continue so long as have matches
 
-          while(matchpos <= 0) 
+          while(matchpos > 0) // 수정 전 matchpos <=0 
           {
              matches = true;                        // Found match
 
