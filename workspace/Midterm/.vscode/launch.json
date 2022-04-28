@@ -15,8 +15,7 @@
             "name": "Launch csued",
             "request": "launch",
             "mainClass": "csued",
-            "projectName": "Midterm",
-            "args": ["csued"]
+            "projectName": "Midterm"
         }
     ]
 }
